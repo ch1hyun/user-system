@@ -3,6 +3,7 @@ package project.usersystem.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import project.usersystem.dto.MemberDTO;
+import project.usersystem.repository.MemberRepository;
 
 @Service
 @RequiredArgsConstructor
