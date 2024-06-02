@@ -39,4 +39,15 @@ public class MemberService {
                 .map(MemberDTO::toMemberDTO)
                 .collect(Collectors.toList());
     }
+
+    public Optional<MemberDTO> findById(Long id) {
+        Optional<Member> findMember = memberRepository.findById(id);
+
+        if (findMember.isPresent()) {
+            Member member = findMember.get();
+            return Optional.of(MemberDTO.toMemberDTO(member));
+        }
+
+        return Optional.empty();
+    }
 }
