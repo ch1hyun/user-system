@@ -16,20 +16,20 @@ public class Member {
     private Long id;
 
     @Column(unique = true)
-    private String memberEmail;
+    private String email;
 
     @Column
-    private String memberPassword;
+    private String password;
 
     @Column
-    private String memberName;
+    private String name;
 
     public static Member toSaveMember(MemberDTO memberDTO) {
         Member member = new Member();
 
-        member.memberEmail = memberDTO.getMemberEmail();
-        member.memberPassword = memberDTO.getMemberPassword();
-        member.memberName = memberDTO.getMemberName();
+        member.email = memberDTO.getEmail();
+        member.password = memberDTO.getPassword();
+        member.name = memberDTO.getName();
 
         return member;
     }
@@ -38,9 +38,9 @@ public class Member {
         Member member = new Member();
 
         member.id = memberDTO.getId();
-        member.memberEmail = memberDTO.getMemberEmail();
-        member.memberPassword = memberDTO.getMemberPassword();
-        member.memberName = memberDTO.getMemberName();
+        member.email = memberDTO.getEmail();
+        member.password = memberDTO.getPassword();
+        member.name = memberDTO.getName();
 
         return member;
     }
