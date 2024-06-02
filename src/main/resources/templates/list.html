@@ -17,9 +17,9 @@
   </tr>
   <tr th:each="member: ${memberList}">
     <td th:text="${member.id}"></td>
-    <td th:text="${member.getEmail}"></td>
-    <td th:text="${member.getPassword}"></td>
-    <td th:text="${member.getName}"></td>
+    <td th:text="${member.getMemberEmail}"></td>
+    <td th:text="${member.getMemberPassword}"></td>
+    <td th:text="${member.getMemberName}"></td>
     <td>
       <!-- query string /member?id=1
           rest api /member/1 -->

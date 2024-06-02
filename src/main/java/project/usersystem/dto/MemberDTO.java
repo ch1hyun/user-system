@@ -13,17 +13,17 @@ import project.usersystem.entity.Member;
 @ToString
 public class MemberDTO {
     private Long id;
-    private String email;
-    private String password;
-    private String name;
+    private String memberEmail;
+    private String memberPassword;
+    private String memberName;
 
     public static MemberDTO toMemberDTO(Member member) {
         MemberDTO memberDTO = new MemberDTO();
 
         memberDTO.id = member.getId();
-        memberDTO.email = member.getEmail();
-        memberDTO.password = member.getPassword();
-        memberDTO.name = member.getName();
+        memberDTO.memberEmail = member.getMemberEmail();
+        memberDTO.memberPassword = member.getMemberPassword();
+        memberDTO.memberName = member.getMemberName();
 
         return memberDTO;
     }

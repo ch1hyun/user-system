@@ -8,9 +8,9 @@
 <body>
 <form action="/member/update" method="post">
   <input type="hidden" th:value="${updateMember.id}" name="id"><br>
-  이메일: <input type="text" th:value="${updateMember.getEmail}" name="memberEmail" readonly> <br>
-  비밀번호: <input type="text" th:value="${updateMember.getPassword}" name="memberPassword"> <br>
-  이름: <input type="text" th:value="${updateMember.getName}" name="memberName"> <br>
+  이메일: <input type="text" th:value="${updateMember.getMemberEmail}" name="memberEmail" readonly> <br>
+  비밀번호: <input type="text" th:value="${updateMember.getMemberPassword}" name="memberPassword"> <br>
+  이름: <input type="text" th:value="${updateMember.getMemberName}" name="memberName"> <br>
   <input type="submit" value="정보수정">
 </form>
 </body>

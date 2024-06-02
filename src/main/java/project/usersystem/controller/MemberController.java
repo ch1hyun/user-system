@@ -45,7 +45,7 @@ public class MemberController {
         if (findResult.isPresent()) {
             // login 성공
             MemberDTO result = findResult.get();
-            session.setAttribute("loginEmail", result.getEmail());
+            session.setAttribute("loginEmail", result.getMemberEmail());
             return "main";
         } else {
             // login 실패
