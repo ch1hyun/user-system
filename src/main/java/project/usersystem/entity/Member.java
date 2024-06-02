@@ -33,4 +33,15 @@ public class Member {
 
         return member;
     }
+
+    public static Member toUpdateMember(MemberDTO memberDTO) {
+        Member member = new Member();
+
+        member.id = memberDTO.getId();
+        member.memberEmail = memberDTO.getMemberEmail();
+        member.memberPassword = memberDTO.getMemberPassword();
+        member.memberName = memberDTO.getMemberName();
+
+        return member;
+    }
 }

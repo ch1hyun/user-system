@@ -50,4 +50,19 @@ public class MemberService {
 
         return Optional.empty();
     }
+
+    public Optional<MemberDTO> findByEmail(String loginEmail) {
+        Optional<Member> findMember = memberRepository.findByMemberEmail(loginEmail);
+
+        if (findMember.isPresent()) {
+            Member member = findMember.get();
+            return Optional.of(MemberDTO.toMemberDTO(member));
+        }
+
+        return Optional.empty();
+    }
+
+    public void update(MemberDTO memberDTO) {
+        memberRepository.save(Member.toUpdateMember(memberDTO));
+    }
 }
