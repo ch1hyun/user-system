@@ -53,6 +53,12 @@ public class MemberController {
         }
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
+
     @GetMapping("/")
     public String findAll(Model model) {
         List<MemberDTO> findMembers = memberService.findAll();
