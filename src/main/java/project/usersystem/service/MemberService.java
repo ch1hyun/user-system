@@ -1,6 +1,8 @@
 package project.usersystem.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import project.usersystem.dto.MemberDTO;
@@ -30,5 +32,11 @@ public class MemberService {
         } else { /* 이메일 실패 */ }
 
         return Optional.empty();
+    }
+
+    public List<MemberDTO> findAll() {
+        return memberRepository.findAll().stream()
+                .map(MemberDTO::toMemberDTO)
+                .collect(Collectors.toList());
     }
 }
