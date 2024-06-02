@@ -1,5 +1,6 @@
 package project.usersystem.service;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import project.usersystem.dto.MemberDTO;
@@ -13,5 +14,21 @@ public class MemberService {
 
     public void save(MemberDTO memberDTO) {
         memberRepository.save(Member.toSaveMember(memberDTO));
+    }
+
+    public Optional<MemberDTO> login(MemberDTO memberDTO) {
+        /*
+            1. 회원이 입력한 이메일로 DB에서 조회
+            2. DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치하는지 판단
+         */
+        Optional<Member> findMember = memberRepository.findByMemberEmail(memberDTO.getMemberEmail());
+        if (findMember.isPresent()) {
+            Member member = findMember.get();
+            if (member.getMemberPassword().equals(memberDTO.getMemberPassword())) {
+                return Optional.of(MemberDTO.toMemberDTO(member));
+            } else { /* 비밀번호 실패 */ }
+        } else { /* 이메일 실패 */ }
+
+        return Optional.empty();
     }
 }

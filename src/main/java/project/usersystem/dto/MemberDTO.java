@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import project.usersystem.entity.Member;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -16,4 +17,15 @@ public class MemberDTO {
     private String memberEmail;
     private String memberPassword;
     private String memberName;
+
+    public static MemberDTO toMemberDTO(Member member) {
+        MemberDTO memberDTO = new MemberDTO();
+
+        memberDTO.id = member.getId();
+        memberDTO.memberEmail = member.getMemberEmail();
+        memberDTO.memberPassword = member.getMemberPassword();
+        memberDTO.memberName = member.getMemberName();
+
+        return memberDTO;
+    }
 }

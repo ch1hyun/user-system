@@ -1,5 +1,7 @@
 package project.usersystem.controller;
 
+import jakarta.servlet.http.HttpSession;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,5 +27,25 @@ public class MemberController {
     public String save(@ModelAttribute MemberDTO memberDTO) {
         memberService.save(memberDTO);
         return "login";
+    }
+
+    @GetMapping("/member/login")
+    public String loginForm() {
+        return "login";
+    }
+
+    @PostMapping("/member/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+        Optional<MemberDTO> findResult = memberService.login(memberDTO);
+
+        if (findResult.isPresent()) {
+            // login 성공
+            MemberDTO result = findResult.get();
+            session.setAttribute("loginEmail", result.getMemberEmail());
+            return "main";
+        } else {
+            // login 실패
+            return "login";
+        }
     }
 }
