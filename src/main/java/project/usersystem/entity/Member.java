@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import project.usersystem.dto.MemberDTO;
 
 @Entity
 @Getter @Setter
@@ -22,4 +23,14 @@ public class Member {
 
     @Column
     private String memberName;
+
+    public static Member toSaveMember(MemberDTO memberDTO) {
+        Member member = new Member();
+
+        member.memberEmail = memberDTO.getMemberEmail();
+        member.memberPassword = memberDTO.getMemberPassword();
+        member.memberName = memberDTO.getMemberName();
+
+        return member;
+    }
 }
