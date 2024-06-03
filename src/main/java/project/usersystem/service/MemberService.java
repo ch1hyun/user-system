@@ -69,4 +69,14 @@ public class MemberService {
     public void deleteById(Long id) {
         memberRepository.deleteById(id);
     }
+
+    public Boolean checkEmail(String memberEmail) {
+        Optional<Member> findMember = memberRepository.findByMemberEmail(memberEmail);
+
+        if (findMember.isPresent()) {
+            return false;
+        }
+
+        return true;
+    }
 }
